@@ -41,7 +41,7 @@ const ListRecipes = (props) => {
                         </Link>
                     <li className="info">
                         <form className="modif">
-                            <h4 className='text'>{recipes.description}</h4>
+                            <h4 className='text'>{recipes.titre}</h4>
                             <h4 className='text'>{recipes.description}</h4>
                             <h4 className='text'>{recipes.personnes}</h4>
                             <h4 className='text'>{recipes.tempsPreparation}</h4>

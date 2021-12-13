@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const DeleteRecipes = ({id}) => {
 
-
     const handleDelete = () =>{
         axios.delete('http://localhost:9000/api/recipes/' + id);
         window.location.reload();

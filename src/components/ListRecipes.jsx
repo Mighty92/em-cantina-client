@@ -55,6 +55,7 @@ const ListRecipes = (props) => {
                             </div>
                                               
                             <DeleteRecipes id={recipes.id}/>
+                            
                         </div>
                     </li>
 

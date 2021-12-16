@@ -23,3 +23,11 @@ export const addRecipes = (data, setInputs) => {
 
         setInputs(newInputs);
 }
+
+export const editRecipes = (recipesId, data) => {
+    axios.put(API + '/recipes/' + recipesId, data, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+}

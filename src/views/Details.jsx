@@ -45,7 +45,7 @@ const Details = () => {
                         <h3 className="text">Le niveau est : {detailRecipes.niveau}</h3>
                         <br/>
 
-                        <h3 className="text">Le npmbredde personne(s) est de : {detailRecipes.personnes}</h3>
+                        <h3 className="text">Le nombre de personne(s) est de : {detailRecipes.personnes}</h3>
                         <br/>
 
                         <h3 className="text">Le temps de préparation est de : {detailRecipes.tempsPreparation}</h3>
@@ -54,6 +54,7 @@ const Details = () => {
                     </div>
                     <div className="element-flexible">
                         <h3 className="text">Les ingredients sont : {detailRecipes.ingredients}</h3>
+                        <br/><br/><br/>
                         <h3 className="text">Les étapes sont : {detailRecipes.etapes}</h3>
 
                         <div className="mod">

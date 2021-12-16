@@ -1,0 +1,80 @@
+
+
+.detail{
+    margin-bottom: 70px;
+    text-align: center;
+    color: black;
+}
+.pdetail{
+    text-align: center;
+    color: black;
+
+}
+
+h2{
+    margin-top: 20px;
+    color: white;
+
+}
+
+.text{
+ color: black;
+}
+
+
+.conteneur-flexible{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-around;
+    align-content: space-around;
+    background-color: none; 
+    width: 100%;
+    max-width: 100%;
+    height: 1000px;
+    border: 2px solid none;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.element-flexible{
+    flex: 1 1 200px;
+    background-color: white; 
+    color: black;
+    width: 45%;
+    max-width: 50%;
+    height: 100%;
+    max-height:100%;
+    border: 2px solid black;
+    margin: 10px;
+    text-align: center;
+}
+
+.detail-img1{
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100%;
+    height: 75%;
+    max-height: 100%;
+    max-width : 100%;
+    display: block;
+    margin: auto;
+}
+
+.detail-img{
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.title, .text, .descript, .mail{
+    margin-bottom: 20px;
+}
+
+.descript{
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -63,10 +63,12 @@ const handleSubmit = (e) => {
         return
         
     }
-    
+        
     console.log({...data})
     addRecipes({...data})
     alert('La recette a été ajouté avec succès !')
+    window.location.href = "/"
+
 
 }
 
@@ -97,11 +99,11 @@ const handleSubmit = (e) => {
             <hr className="menu"/>
             <div className="wrapper">
                 <div className="form-wrapper">
-                <h1>Formulaire de recette</h1>
+                <h1><b>Formulaire de recette</b></h1>
 
                 <form onSubmit={handleSubmit}>
                     <div className="titre">
-                    <label htmlFor="titre">Titre : </label>
+                    <label htmlFor="titre"><h2 className="ajt">Titre :</h2> </label>
                     <input
                         className=""
                         placeholder="Titre"
@@ -114,7 +116,7 @@ const handleSubmit = (e) => {
                     </div>
                     <br/>
                     <div className="description">
-                    <label htmlFor="titre">Description : </label>
+                    <label htmlFor="titre"><h2 className="ajt">Description :</h2> </label>
                     <input
                         className=""
                         placeholder="Description"
@@ -128,7 +130,7 @@ const handleSubmit = (e) => {
                     <br/>
 
                     <div className="personnes">
-                    <label htmlFor="nbrPers">Nombre de personne(s) : </label>
+                    <label htmlFor="nbrPers"><h2 className="ajt">Nombre de personne(s) : </h2></label>
                     <input
                         className=""
                         placeholder="Nombre de personne(s)"
@@ -143,7 +145,7 @@ const handleSubmit = (e) => {
                     <br/>
 
                     <div className="tempsPreparation">
-                    <label htmlFor="tdp">Temps de préparation : </label>
+                    <label htmlFor="tdp"><h2 className="ajt">Temps de préparation : </h2></label>
                     <input
                         className=""
                         placeholder="Temps de préparation"
@@ -157,7 +159,7 @@ const handleSubmit = (e) => {
                     <br/>
 
                     <div className="niveau">
-                    <label htmlFor="niveau">Niveau : </label>
+                    <label htmlFor="niveau"> <h2 className="ajt">Niveau : </h2></label>
                         <select id="niveau" name="niveau" 
                         onChange={handleInputsChange}
                         value={inputs.niveau}>
@@ -201,7 +203,7 @@ const handleSubmit = (e) => {
                             />
                             </div>
                             <button
-                            className="btn btn-warning"
+                            className="suppr"
                             onClick={() => handleRemoveField(index)}
                             >
                             X
@@ -209,7 +211,7 @@ const handleSubmit = (e) => {
                         </div>
                         ))}
 
-                        <button className="btn btn-primary mt-2" onClick={handleAddLink}>
+                        <button className="add" onClick={handleAddLink}>
                         Ajouter un ingrédient
                         </button>
                         <br/><br/>
@@ -230,7 +232,7 @@ const handleSubmit = (e) => {
                             </div>
 
                             <button
-                                className="btn btn-warning"
+                                className="suppr"
                                 onClick={(e) => handleRemoveField2(e, index)}
                             >
                             X
@@ -238,13 +240,13 @@ const handleSubmit = (e) => {
                         </div>
                          ))} 
 
-                        <button className="btn btn-primary mt-2" onClick={handleAddLink2}>
+                        <button className="add" onClick={handleAddLink2}>
                         Ajouter une étape
                         </button>
                         <br/><br/>
 
                             <div className="photo">
-                        <label htmlFor="photo">Photo : </label>
+                        <label htmlFor="photo"> <h2 className="ajt">Photo : </h2></label>
                         <input
                             className=""
                             type="url"

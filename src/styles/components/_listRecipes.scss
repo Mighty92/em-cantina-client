@@ -1,0 +1,260 @@
+*{
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .montitre{
+    text-align: center;
+    padding-right: 40px;
+    color: white;
+  }
+  
+  .menu {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .menu .menuTitle {
+      width: 70%;
+      max-width: 100%;
+      text-align: center;
+      font-family: cursive;
+      font-size: 60px;
+      text-align: center;
+    }
+    
+    .menuList {
+      width: 70%;
+      max-width: 100%;
+      height: auto;
+      display: grid;
+      margin: auto;
+      grid-template-columns: 1fr 1fr 1fr;
+      place-items: center;
+      justify-content: space-evenly;
+    }
+  
+  .menuItem {
+      border-radius: 15px;
+      width: 80%;
+      max-width: 100%;
+      height: 95%;
+      max-height: 100%;
+      margin-top: 50px;
+      box-shadow: 0px 3px 15px #4b4d10;
+    }
+    .menuItem:hover {
+      box-shadow: 0px 3px 15px  #ffffff;
+      transition: 0.3s ease-in;
+      cursor: pointer;
+    }
+    
+    .menuItem div {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      width: 100%;
+      max-width: 100%;
+      height: 10
+      0px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .menuItem h1,
+    .menuItem p {
+      margin-left: 20px;
+    }
+    
+    .img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      transition: all 0.2s linear;
+    }
+    
+    .info {
+      
+      padding: 20px 30px 20px;
+    }
+    
+    .text2 {
+      color: #ffffff;
+      font-size: 18px;
+      text-align: center;
+      width: 80%;
+      max-width: 100%;
+      line-height: 24px;
+      padding-left: 30px;
+      margin-top: 10px;
+    }
+  
+    form.modif{
+      display: block;
+      text-align: center;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+        form {
+          display: grid;
+          min-width: 400px;
+          text-align: center;
+          width: 50%;
+          max-width: 600px;
+          margin: 0 auto;
+      
+          input,
+          textarea {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid $color-1;
+            resize: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+          }
+    
+          input[type="submit"] {
+            width: 200px;
+            margin-left: auto;
+            cursor: pointer;
+            transition: 0.4s;
+            background: $color-1;
+    
+            &:hover {
+                background: $color-4;
+                color: white;
+              }
+      
+          }
+        }
+    
+        .link {
+    
+          width: 100%;
+          box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+          -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+          filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+          border-radius: 10px;
+          overflow: hidden;
+          text-decoration: none;
+        }
+    
+      //   Button
+  
+      .mod{
+        text-align: center;
+        padding-right: 45px;
+      }
+        .styled {
+          margin-top: auto;
+          border: 0;
+          line-height: 2.5;
+          padding: 0 20px;
+          font-size: 1rem;
+          color: rgb(0, 0, 0);
+          text-shadow: 1px 1px 1px #000;
+          border-radius: 10px;
+          background-color: rgba(220, 0, 0, 1);
+          background-image: linear-gradient(to top left,
+                                            rgba(0, 0, 0, .2),
+                                            rgba(0, 0, 0, .2) 30%,
+                                            rgba(0, 0, 0, 0));
+          box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                      inset -2px -2px 3px rgba(0, 0, 0, .6);
+      }
+      
+      .styled:hover {
+          background-color: rgba(255, 0, 0, 1);
+      }
+      
+      .styled:active {
+          box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                      inset 2px 2px 3px rgba(212, 208, 208, 0.6);
+      }
+  
+      // checkbox
+   form {
+    display: flex;
+    place-content: center;
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-evenly;
+  }
+  
+  form .title{
+      margin-top: 50px;
+  }
+  
+  .form-control {
+    font-family: system-ui, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.1;
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+  }
+  
+  
+  input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: var(--form-background);
+    /* Not removed via appearance */
+    margin: 0;
+  
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+  
+    display: flex;
+    place-content: center;
+  }
+  
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+  }
+  
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+  
+    
+    @media only screen and (max-width: 1300px) {
+      .menuList {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media only screen and (max-width: 800px) {
+      .menuList {
+        grid-template-columns: 1fr;
+      }
+    }
+    

@@ -3,6 +3,10 @@
 
 @import './components/navigation';
 @import './components/logo';
+@import './components/listRecipes';
 
 
 @import './views/home';
+@import './views/details';
+@import './views/ajoutRecette';
+@import './views/modificationRecette';

@@ -57,6 +57,7 @@ const Home = () => {
                         <option value="Date de sortie"/>
                     </datalist>
                 <input
+                className="rechercher"
                 type="submit"
                 value="rechercher"/>
             </form>

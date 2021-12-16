@@ -34,7 +34,7 @@ const ListRecipes = (props) => {
         <>    
            
             <div className="menuItem">
-                    <h1 className="montitre">{recipes.title}</h1>
+                    <h1 className="montitre">{recipes.titre}</h1>
                         <Link className='cards__item__link' to={{ pathname: "/details", search: `${recipes.id}` }}>
                             <figure>
                                 <img
@@ -45,15 +45,16 @@ const ListRecipes = (props) => {
                         </Link>
                     <li className="info">
                         <form className="modif">
-                            <h4 className='text'>{recipes.titre}</h4>
-                            <h4 className='text'>{recipes.description}</h4>
-                            <h4 className='text'>{recipes.personnes}</h4>
-                            <h4 className='text'>{recipes.tempsPreparation}</h4>
+                            <h4 className='text2'>{recipes.titre}</h4>
+                            <h4 className='text2'>{recipes.description}</h4>
+                            <h4 className='text2'>Nombre de personne(s) : {recipes.personnes}</h4>
+                            <h4 className='text2'>Temps de préparation : {recipes.tempsPreparation}mn</h4>
                         </form>
+                        <br/><br/>
                         <div>
                             <div  className="mod">
 
-                                <Link to={"/modificationPage/" + recipes.id} >
+                                <Link to={"/modification-recette/" + recipes.id} >
                                 <button className="favorite styled">Modifier</button>
                                 </Link>
                             </div>

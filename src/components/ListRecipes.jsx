@@ -4,14 +4,14 @@ import DeleteRecipes from './DeleteRecipes';
 import axios from 'axios';
 
 const ListRecipes = (props) => {
-    const {recipes, id} = props
+    const {recipes, onDeleteItem} = props
 
     const [isEditing, setIsEditing] = useState(false);
     const [editContent, setEditContent] = useState("");
 
     const handleEdit = () =>{
         const data = {
-            tire: recipes.title,
+            titre: recipes.title,
             description: editContent ? editContent: recipes.description,
             date: recipes.release_date,
         }
@@ -26,12 +26,16 @@ const ListRecipes = (props) => {
     useEffect(()=>{
         console.log(recipes)
     },[])
+
+    const handleDelete = () =>{
+        onDeleteItem()
+    }
     return (
         <>    
            
             <div className="menuItem">
                     <h1 className="montitre">{recipes.title}</h1>
-                        <Link className='cards__item__link' to={{ pathname: "/details", search: `${id}` }}>
+                        <Link className='cards__item__link' to={{ pathname: "/details", search: `${recipes.id}` }}>
                             <figure>
                                 <img
                                 className='img'
@@ -54,7 +58,7 @@ const ListRecipes = (props) => {
                                 </Link>
                             </div>
                                               
-                            <DeleteRecipes id={recipes.id}/>
+                            <DeleteRecipes id={recipes.id} onDelete={handleDelete}/>
                             
                         </div>
                     </li>

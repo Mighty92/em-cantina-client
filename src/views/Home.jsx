@@ -18,6 +18,13 @@ const Home = () => {
         e.preventDefault();
         result();
     }
+
+    const deleteItem = (index)=>{
+        const recipes2 = recipes.slice();
+        recipes2.splice(index, 1)
+        setRecipes(recipes2);
+    }
+
   
 
     const [recipes, setRecipes] = useState([]);
@@ -56,7 +63,7 @@ const Home = () => {
             <div className="menu">
                 <h1 className="bibli">Bibliothèque</h1>
                 <div className="menuList">
-                    {recipes.map((recipes, index) => <ListRecipes recipes={recipes} key={index} id={recipes.id}/>)}
+                    {recipes.map((recipes, index) => <ListRecipes recipes={recipes} key={index} onDeleteItem={()=>{deleteItem(index)}}/>)}
                 </div>
             </div>
         </div>

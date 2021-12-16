@@ -1,309 +1,270 @@
 import React, {useState} from 'react';
+import Logo from '../components/Logo';
+import Navigation from '../components/Navigation';
+import { addRecipes } from '../components/utils/crud';
 
 const AjoutRecette = () => {
 
+    // formulaire 1 ingredient
+    const [ingredient, setIngredient] = useState([]);
+    const [etape, setEtape] = useState([]);
     const [inputs, setInputs] = useState({
         titre: "",
         description: "",
         niveau: "",
         personnes: "",
-        tempsPrepaation: "",
-        ingredients: "",
-        etapes: "",
-        photo: "",
+        tempsPreparation: "",
+        ingredients: [],
+        etapes: [],
+        photo: ""
     });
 
+  const handleAddLink = () => {
+    const ingredient2 = [...ingredient]
+    ingredient2.push(["","",""])
+    setIngredient(ingredient2) 
+  };
 
-    // formulaire 1 ingredient
-    const [form, setForm] = useState([]);
+  const handleAddLink2 = () => {
+    const etape2 = [...etape]
+    etape2.push([""])
+    setEtape(etape2) 
+  };
 
-  const prevIsValid = () => {
-    if (form.length === 0) {
-      return true;
+  const handleRemoveField = (index) => {
+    const ingredient2 = [...ingredient]
+    ingredient2.splice(index, 1)
+    setIngredient(ingredient2)
+  };
+
+
+  const handleRemoveField2 = (index) => {
+    const etape2 = [...etape]
+    etape2.splice(index, 1)
+    setEtape(etape2)
+  };
+
+
+const handleSubmit = (e) => {
+    const data = {...inputs};
+    e.preventDefault()
+    console.log({...data})
+    if (
+        !data.titre ||
+        !data.description ||
+        !data.niveau ||
+        !data.personnes ||
+        !data.tempsPreparation ||
+        data.ingredients.length == 0 ||
+        data.etapes.length == 0 ||
+        !data.photo
+    ) {
+        alert("Veuillez remplir chacun des champs");
+        return
+        
+    }
+    
+    console.log({...data})
+    addRecipes({...data})
+    alert('La recette a été ajouté avec succès !')
+
+}
+
+
+  const handleInputsChange = (e) => {
+      const inputs2 = {...inputs}
+      inputs2[e.target.name] = e.target.value
+      setInputs(inputs2)
+}
+
+    const handleIngredientsChange = (index, value, i) =>{
+        const ingredient2 = [...ingredient]
+        ingredient2[index] [i] = value
+        setIngredient(ingredient2)
     }
 
-    const someEmpty = form.some(
-      (item) => item.Ingredient === "" 
-    );
-
-    if (someEmpty) {
-      form.map((item, index) => {
-        const allPrev = [...form];
-
-
-        if (form[index].Ingredient === "") {
-          allPrev[index].errors.Ingredient = "Veuillez mettre au moins 1 ingrédient dans la liste";
-        }
-        setForm(allPrev);
-      });
+    const handleEtapesChange = (index, value, i) =>{
+        const etape2 = [...etape]
+        etape2[index] [i] = value
+        setEtape(etape2)
     }
 
-    return !someEmpty;
-  };
 
-  const handleAddLink = (e) => {
-    e.preventDefault();
-    const inputState = {
-        Ingredient: "",
-
-      errors: {
-        Ingredient: null,
-      },
-    };
-
-    if (prevIsValid()) {
-      setForm((prev) => [...prev, inputState]);
-    }
-  };
-
-  const onChange = (index, event) => {
-    event.preventDefault();
-    event.persist();
-
-    setForm((prev) => {
-      return prev.map((item, i) => {
-        if (i !== index) {
-          return item;
-        }
-
-        return {
-          ...item,
-          [event.target.name]: event.target.value,
-
-          errors: {
-            ...item.errors,
-            [event.target.name]:
-              event.target.value.length > 0
-                ? null
-                : [event.target.name] + " Is required",
-          },
-        };
-      });
-    });
-  };
-
-  const handleRemoveField = (e, index) => {
-    e.preventDefault();
-
-    setForm((prev) => prev.filter((item) => item !== prev[index]));
-  };
-
-  // formulaire 2 etape
-  const [form2, setForm2] = useState([]);
-
-  const prevIsValid2 = () => {
-    if (form2.length === 0) {
-      return true;
-    }
-
-    const someEmpty = form2.some(
-      (item) => item.Etape === "" 
-    );
-
-    if (someEmpty) {
-      form2.map((item2, index) => {
-        const allPrev = [...form2];
-
-
-        if (form2[index].Etape === "") {
-          allPrev[index].errors.Etape = "Veuillez mettre au moins 1 Etape dans la liste";
-        }
-        setForm2(allPrev);
-      });
-    }
-
-    return !someEmpty;
-  };
-
-  const handleAddLink2 = (e) => {
-    e.preventDefault();
-    const inputState = {
-        Etape: "",
-
-      errors: {
-        Etape: null,
-      },
-    };
-
-    if (prevIsValid2()) {
-      setForm2((prev) => [...prev, inputState]);
-    }
-  };
-
-  const onChange2 = (index, event) => {
-    event.preventDefault();
-    event.persist();
-
-    setForm2((prev) => {
-      return prev.map((item2, i) => {
-        if (i !== index) {
-          return item2;
-        }
-
-        return {
-          ...item2,
-          [event.target.name]: event.target.value,
-
-          errors: {
-            ...item2.errors,
-            [event.target.name]:
-              event.target.value.length > 0
-                ? null
-                : [event.target.name] + " Is required",
-          },
-        };
-      });
-    });
-  };
-
-  const handleRemoveField2 = (e, index) => {
-    e.preventDefault();
-
-    setForm2((prev) => prev.filter((item2) => item2 !== prev[index]));
-  };
     return (
-        <div className="wrapper">
-            <div className="form-wrapper">
-            <h1>Formulaire de recette</h1>
+        <>
+            <Logo/>
+            <Navigation/>
+            <hr className="menu"/>
+            <div className="wrapper">
+                <div className="form-wrapper">
+                <h1>Formulaire de recette</h1>
 
-            <form>
-                <div className="titre">
-                <label htmlFor="titre">Titre : </label>
-                <input
-                    className=""
-                    placeholder="titre"
-                    type="text"
-                    name="titre"
-                    required
-                />
-                </div>
-                <br/>
-                <div className="description">
-                <label htmlFor="titre">Description : </label>
-                <input
-                    className=""
-                    placeholder="description"
-                    type="text"
-                    name="description"
-                    required
-                />
-                </div>
-                <br/>
-
-                <div className="nbrPers">
-                <label htmlFor="nbrPers">Nombre de personne(s) : </label>
-                <input
-                    className=""
-                    placeholder="nombre de personne(s)"
-                    type="text"
-                    name="nbrPers"
-                    required
-                />
-                </div>
-                <br/>
-
-                <div className="tdp">
-                <label htmlFor="tdp">Temps de préparation : </label>
-                <input
-                    className=""
-                    placeholder="temps de préparation"
-                    type="number"
-                    name="tdp"
-                    required
-                />
-                </div>
-                <br/>
-
-                <div className="niveau">
-                <label htmlFor="niveau">Niveau : </label>
-                    <select id="niveau" name="niveau">
-                        <optgroup label="difficulté">
-                            <option value="aucun" selected>Choix</option>
-                            <option value="padawan">Padawan</option>
-                            <option value="jedi">Jedi</option>
-                            <option value="maître">Maître</option>
-                        </optgroup>
-                    </select>
-                </div>
-                <br/>
-
-                {/* formulaire 1 ingredient */}
-                {form.map((item, index) => (
-                <div className="row mt-3" key={`item-${index}`}>
-                    <div className="col">
-                        <input
-                            type="text"
-                            className={
-                            item.errors.Ingredient
-                            ? "form-control  is-invalid"
-                            : "form-control"
-                            }
-                            name="Ingredient"
-                            placeholder="Ingredient"
-                            value={item.Ingredient}
-                            onChange={(e) => onChange(index, e)}
-                        />
-                        {item.errors.Ingredient && (
-                            <div className="invalid-feedback">{item.errors.Ingredient}</div>
-                        )}
+                <form onSubmit={handleSubmit}>
+                    <div className="titre">
+                    <label htmlFor="titre">Titre : </label>
+                    <input
+                        className=""
+                        placeholder="Titre"
+                        type="text"
+                        name="titre"
+                        onChange={handleInputsChange}
+                        value={inputs.titre}
+                        required
+                    />
                     </div>
-                    <button
-                    className="btn btn-warning"
-                    onClick={(e) => handleRemoveField(e, index)}
-                    >
-                    X
-                    </button>
-                </div>
-                ))}
+                    <br/>
+                    <div className="description">
+                    <label htmlFor="titre">Description : </label>
+                    <input
+                        className=""
+                        placeholder="Description"
+                        type="text"
+                        name="description"
+                        onChange={handleInputsChange}
+                        value={inputs.description}
+                        required
+                    />
+                    </div>
+                    <br/>
 
-                <button className="btn btn-primary mt-2" onClick={handleAddLink}>
-                Ajouter un ingrédient
-                </button>
-                <br/><br/>
+                    <div className="personnes">
+                    <label htmlFor="nbrPers">Nombre de personne(s) : </label>
+                    <input
+                        className=""
+                        placeholder="Nombre de personne(s)"
+                        type="number"
+                        name="personnes"
+                        onChange={handleInputsChange}
+                        value={inputs.personnes}
 
-                {/* formulaire 2 Etape */}
+                        required
+                    />
+                    </div>
+                    <br/>
 
-                {form2.map((item2, index) => (
+                    <div className="tempsPreparation">
+                    <label htmlFor="tdp">Temps de préparation : </label>
+                    <input
+                        className=""
+                        placeholder="Temps de préparation"
+                        type="number"
+                        name="tempsPreparation"
+                        onChange={handleInputsChange}
+                        value={inputs.tempsPreparation}
+                        required
+                    />
+                    </div>
+                    <br/>
+
+                    <div className="niveau">
+                    <label htmlFor="niveau">Niveau : </label>
+                        <select id="niveau" name="niveau" 
+                        onChange={handleInputsChange}
+                        value={inputs.niveau}>
+                            <optgroup label="difficulté">
+                                <option value="aucun" selected>Choix</option>
+                                <option value="padawan">Padawan</option>
+                                <option value="jedi">Jedi</option>
+                                <option value="maître">Maître</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <br/>
+
+                    {/* formulaire 1 ingredient */}
+                    {ingredient.map((ingredients, index) => (
                     <div className="row mt-3" key={`item-${index}`}>
                         <div className="col">
-                            <textarea
-                            type="text"
-                            className={
-                            item2.errors.Etape
-                                ? "form-control  is-invalid"
-                                : "form-control"
-                            }
-                            name="Etape"
-                            placeholder="Etape"
-                            value={item2.Etape}
-                            onChange={(e) => onChange2(index, e)}
+                            <input
+                                type="text"
+                                placeholder="Quantité"
+                                name="ingredients"
+                                onChange={(e)=>{handleIngredientsChange(index, e.target.value, 0)}}
+                                value={ingredients[0]}
                             />
-                            {item2.errors.Etape && (
-                                <div className="invalid-feedback">{item2.errors.Etape}</div>
-                            )}
-                        </div>
+                            
+                            <input
+                                type="text"
+                                name="ingredients"
+                                placeholder="Unité"
+                                onChange={(e)=>{handleIngredientsChange(index, e.target.value, 1)}}
+                                value={ingredients[1]}
+                            />
+                            
 
-                        <button
+                            <input
+                                type="text"
+                                name="ingredients"
+                                placeholder="Ingredient"
+                                onChange={(e)=>{handleIngredientsChange(index, e.target.value, 2)}}
+                                value={ingredients[2]}
+                            />
+                            </div>
+                            <button
                             className="btn btn-warning"
-                            onClick={(e) => handleRemoveField2(e, index)}
-                        >
-                        X
+                            onClick={() => handleRemoveField(index)}
+                            >
+                            X
+                            </button>
+                        </div>
+                        ))}
+
+                        <button className="btn btn-primary mt-2" onClick={handleAddLink}>
+                        Ajouter un ingrédient
                         </button>
-                    </div>
-                    ))}
+                        <br/><br/>
 
-                    <button className="btn btn-primary mt-2" onClick={handleAddLink2}>
-                    Ajouter une étape
-                    </button>
-                    <br/><br/>
+                    {/* formulaire 2 Etape */}
+
+                    {etape.map((etapes, index) => (
+                        <div className="row mt-3" key={`item-${index}`}>
+                            <div className="col">
+                                <textarea
+                                    type="text"   
+                                    name="etapes"
+                                    placeholder="Etape"
+                                    onChange={(e)=>{handleEtapesChange(index, e.target.value, 0)}}
+                                    value={etapes[0]}
+                                />
+                               
+                            </div>
+
+                            <button
+                                className="btn btn-warning"
+                                onClick={(e) => handleRemoveField2(e, index)}
+                            >
+                            X
+                            </button>
+                        </div>
+                         ))} 
+
+                        <button className="btn btn-primary mt-2" onClick={handleAddLink2}>
+                        Ajouter une étape
+                        </button>
+                        <br/><br/>
+
+                            <div className="photo">
+                        <label htmlFor="photo">Photo : </label>
+                        <input
+                            className=""
+                            type="url"
+                            placeholder="https://example.com"
+                            name="photo"
+                            onChange={handleInputsChange}
+                            value={inputs.photo}
+                            required
+                        />
+                        </div>
+                        <br/>
 
 
-                    <div className="Validité">
-                        <button type="submit">Valider mon formulaire</button>
-                    </div>
-                </form>
+                        <div className="Validité">
+                            <button type="submit">Valider mon formulaire</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

@@ -8,8 +8,8 @@ import {useParams} from "react-router-dom";
 const ModificationRecette = () => {
     const {id} = useParams()
     // formulaire 1 ingredient
-    const [ingredient, setIngredient] = useState([]);
-    const [etape, setEtape] = useState([]);
+    const [ingredients, setIngredients] = useState([]);
+    const [etapes, setEtapes] = useState([]);
     const [inputs, setInputs] = useState({
         titre: "",
         description: "",
@@ -28,36 +28,36 @@ const ModificationRecette = () => {
   const handleAddLink = (e) => {
     e.preventDefault()
 
-    const ingredient2 = [...ingredient]
-    ingredient2.push(["","",""])
-    setIngredient(ingredient2) 
+    const ingredients2 = [...ingredients]
+    ingredients2.push(["","",""])
+    setIngredients(ingredients2) 
   };
 
   const handleAddLink2 = (e) => {
       e.preventDefault()
-    const etape2 = [...etape]
-    etape2.push([""])
-    setEtape(etape2) 
+    const etapes2 = [...etapes]
+    etapes2.push("")
+    setEtapes(etapes2) 
   };
 
   const handleRemoveField = (index) => {
-    const ingredient2 = [...ingredient]
-    ingredient2.splice(index, 1)
-    setIngredient(ingredient2)
+    const ingredients2 = [...ingredients]
+    ingredients2.splice(index, 1)
+    setIngredients(ingredients2)
   };
 
 
   const handleRemoveField2 = (index) => {
-    const etape2 = [...etape]
-    etape2.splice(index, 1)
-    setEtape(etape2)
+    const etapes2 = [...etapes]
+    etapes2.splice(index, 1)
+    setEtapes(etapes2)
   };
 
 
 const handleSubmit = (e) => {
     const data = {...inputs};
     e.preventDefault()
-    console.log({...data})
+    console.log(data)
     if (
         !data.titre ||
         !data.description ||
@@ -65,8 +65,7 @@ const handleSubmit = (e) => {
         !data.personnes ||
         !data.tempsPreparation ||
         data.ingredients.length == 0 ||
-        data.etapes.length == 0 ||
-        !data.photo
+        data.etapes.length == 0 
     ) {
         alert("Veuillez remplir chacun des champs");
         return
@@ -75,7 +74,7 @@ const handleSubmit = (e) => {
     
         
     console.log({...data})
-    editRecipe(id, {...data})
+    editRecipe(id, data)
     alert('La recette a bien été modifié !')
     window.location.href = "/"
 
@@ -90,15 +89,15 @@ const handleSubmit = (e) => {
 }
 
     const handleIngredientsChange = (index, value, i) =>{
-        const ingredient2 = [...ingredient]
-        ingredient2[index] [i] = value
-        setIngredient(ingredient2)
+        const ingredients2 = [...ingredients]
+        ingredients2[index] [i] = value
+        setIngredients(ingredients2)
     }
 
     const handleEtapesChange = (index, value, i) =>{
-        const etape2 = [...etape]
-        etape2[index] [i] = value
-        setEtape(etape2)
+        const etapes2 = [...etapes]
+        etapes2[index] [i] = value
+        setEtapes(etapes2)
     }
 
 
@@ -184,7 +183,7 @@ const handleSubmit = (e) => {
                     <br/>
 
                     {/* formulaire 1 ingredient */}
-                    {ingredient.map((ingredients, index) => (
+                    {ingredients.map((ingredient, index) => (
                     <div className="row mt-3" key={`item-${index}`}>
                         <div className="col">
                             <input
@@ -192,7 +191,7 @@ const handleSubmit = (e) => {
                                 placeholder="Quantité"
                                 name="ingredients"
                                 onChange={(e)=>{handleIngredientsChange(index, e.target.value, 0)}}
-                                value={ingredients[0]}
+                                value={ingredient[0]}
                             />
                             
                             <input
@@ -228,7 +227,7 @@ const handleSubmit = (e) => {
 
                     {/* formulaire 2 Etape */}
 
-                    {etape.map((etapes, index) => (
+                    {etapes.map((etape, index) => (
                         <div className="row mt-3" key={`item-${index}`}>
                             <div className="col">
                                 <textarea
@@ -236,7 +235,7 @@ const handleSubmit = (e) => {
                                     name="etapes"
                                     placeholder="Etape"
                                     onChange={(e)=>{handleEtapesChange(index, e.target.value, 0)}}
-                                    value={etapes[0]}
+                                    value={etape[0]}
                                 />
                                
                             </div>

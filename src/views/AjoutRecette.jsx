@@ -50,7 +50,7 @@ const AjoutRecette = () => {
 const handleSubmit = (e) => {
     e.preventDefault()
     const data = {...inputs} 
-    data.ingredients = ingredients
+    data.ingredients = [["",""]]
     data.etapes = etapes
     data.personnes = parseInt(data.personnes)
     data.tempsPreparation = parseInt(data.tempsPreparation)
@@ -70,6 +70,8 @@ const handleSubmit = (e) => {
     console.log(data)
     addRecipes(data)
     alert('La recette a été ajouté avec succès !')
+    window.location.href = "/"
+
 
 
 }
@@ -228,7 +230,7 @@ const handleSubmit = (e) => {
                                     name="etapes"
                                     placeholder="Etape"
                                     onChange={(e)=>{handleEtapesChange(index, e.target.value)}}
-                                    value={etape[0]}
+                                    value={etapes[0]}
                                 />
                                
                             </div>

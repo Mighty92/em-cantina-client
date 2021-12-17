@@ -46,7 +46,7 @@ const Home = () => {
                 <label className="form-control">
                     <input onInput={(e)=>setSearchValue(e)}
                         type="text" 
-                        placeholder="Recherchez vos films"/> 
+                        placeholder="Recherchez votre type de plat"/> 
                 </label>
 
                 <label className="form-control" htlmlFor="ice-cream-choice">Filtrez par</label>

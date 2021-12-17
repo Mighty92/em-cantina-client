@@ -25,13 +25,16 @@ const ModificationRecette = () => {
         getRecipeData(id, setInputs)
     }, [])
 
-  const handleAddLink = () => {
+  const handleAddLink = (e) => {
+    e.preventDefault()
+
     const ingredient2 = [...ingredient]
     ingredient2.push(["","",""])
     setIngredient(ingredient2) 
   };
 
-  const handleAddLink2 = () => {
+  const handleAddLink2 = (e) => {
+      e.preventDefault()
     const etape2 = [...etape]
     etape2.push([""])
     setEtape(etape2) 
@@ -108,7 +111,7 @@ const handleSubmit = (e) => {
                 <div className="form-wrapper">
                 <h1><b>Modifiez la recette</b></h1>
 
-                <form onSubmit={handleSubmit}>
+                <form>
                     <div className="titre">
                     <label htmlFor="titre"><h2 className="ajt">Titre :</h2></label>
                     <input
@@ -252,23 +255,8 @@ const handleSubmit = (e) => {
                         </button>
                         <br/><br/>
 
-                            <div className="photo">
-                        <label htmlFor="photo"><h2 className="ajt">Photo :</h2></label>
-                        <input
-                            className=""
-                            type="url"
-                            placeholder="https://example.com"
-                            name="photo"
-                            onChange={handleInputsChange}
-                            value={inputs.photo}
-                            required
-                        />
-                        </div>
-                        <br/>
-
-
                         <div className="Validité">
-                            <button type="submit">Modifier mon formulaire</button>
+                            <button onClick={handleSubmit}>Modifier le formulaire</button>
                         </div>
                     </form>
                 </div>

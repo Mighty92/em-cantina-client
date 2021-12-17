@@ -14,8 +14,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home}/>
           <Route path="/details" exact component={Details}/>
-          <Route path="/ajout-recette" exact component={AjoutRecette}/>
-          <Route path="/modification-recette/:id" exact component={ModificationRecette}/>
+          <Route path="/ajoutRecette" exact component={AjoutRecette}/>
+          <Route path="/modificationRecette/:id" exact component={ModificationRecette}/>
           <Route component={NotFound}/>
         </Switch>
       </BrowserRouter>

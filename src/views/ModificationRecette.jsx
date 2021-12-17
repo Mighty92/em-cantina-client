@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Logo from '../components/Logo';
 import Navigation from '../components/Navigation';
-import { editRecipes } from '../components/utils/crud';
+import { editRecipe, getRecipeData } from '../components/utils/crud';
 import {useParams} from "react-router-dom";
 
 
 const ModificationRecette = () => {
-
     const {id} = useParams()
     // formulaire 1 ingredient
     const [ingredient, setIngredient] = useState([]);
@@ -21,6 +20,10 @@ const ModificationRecette = () => {
         etapes: [],
         photo: ""
     });
+
+    useEffect(() => {
+        getRecipeData(id, setInputs)
+    }, [])
 
   const handleAddLink = () => {
     const ingredient2 = [...ingredient]
@@ -69,8 +72,10 @@ const handleSubmit = (e) => {
     
         
     console.log({...data})
-    editRecipes(id, {...data})
-    alert('La recette a été ajouté avec succès !')
+    editRecipe(id, {...data})
+    alert('La recette a bien été modifié !')
+    window.location.href = "/"
+
 
 }
 
@@ -101,11 +106,11 @@ const handleSubmit = (e) => {
             <hr className="menu"/>
             <div className="wrapper">
                 <div className="form-wrapper">
-                <h1>Formulaire de recette</h1>
+                <h1><b>Modifiez la recette</b></h1>
 
                 <form onSubmit={handleSubmit}>
                     <div className="titre">
-                    <label htmlFor="titre">Titre : </label>
+                    <label htmlFor="titre"><h2 className="ajt">Titre :</h2></label>
                     <input
                         className=""
                         placeholder="Titre"
@@ -113,12 +118,12 @@ const handleSubmit = (e) => {
                         name="titre"
                         onChange={handleInputsChange}
                         value={inputs.titre}
-                        required
+                        required={true}
                     />
                     </div>
                     <br/>
                     <div className="description">
-                    <label htmlFor="titre">Description : </label>
+                    <label htmlFor="titre"><h2 className="ajt">Description :</h2></label>
                     <input
                         className=""
                         placeholder="Description"
@@ -132,7 +137,7 @@ const handleSubmit = (e) => {
                     <br/>
 
                     <div className="personnes">
-                    <label htmlFor="nbrPers">Nombre de personne(s) : </label>
+                    <label htmlFor="nbrPers"><h2 className="ajt">Nombre de personne(s) :</h2></label>
                     <input
                         className=""
                         placeholder="Nombre de personne(s)"
@@ -147,7 +152,7 @@ const handleSubmit = (e) => {
                     <br/>
 
                     <div className="tempsPreparation">
-                    <label htmlFor="tdp">Temps de préparation : </label>
+                    <label htmlFor="tdp"><h2 className="ajt">Temps de préparation :</h2></label>
                     <input
                         className=""
                         placeholder="Temps de préparation"
@@ -161,7 +166,7 @@ const handleSubmit = (e) => {
                     <br/>
 
                     <div className="niveau">
-                    <label htmlFor="niveau">Niveau : </label>
+                    <label htmlFor="niveau"><h2 className="ajt">Niveau :</h2></label>
                         <select id="niveau" name="niveau" 
                         onChange={handleInputsChange}
                         value={inputs.niveau}>
@@ -248,7 +253,7 @@ const handleSubmit = (e) => {
                         <br/><br/>
 
                             <div className="photo">
-                        <label htmlFor="photo">Photo : </label>
+                        <label htmlFor="photo"><h2 className="ajt">Photo :</h2></label>
                         <input
                             className=""
                             type="url"
@@ -263,7 +268,7 @@ const handleSubmit = (e) => {
 
 
                         <div className="Validité">
-                            <button type="submit">Valider mon formulaire</button>
+                            <button type="submit">Modifier mon formulaire</button>
                         </div>
                     </form>
                 </div>

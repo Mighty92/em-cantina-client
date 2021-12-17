@@ -54,7 +54,7 @@ const ListRecipes = (props) => {
                         <div>
                             <div  className="mod">
 
-                                <Link to={"/modification-recette/" + recipes.id} >
+                                <Link to={"/modificationRecette/" + recipes.id} >
                                 <button className="favorite styled">Modifier</button>
                                 </Link>
                             </div>

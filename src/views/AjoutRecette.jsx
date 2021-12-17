@@ -99,7 +99,7 @@ const handleSubmit = (e) => {
             <hr className="menu"/>
             <div className="wrapper">
                 <div className="form-wrapper">
-                <h1><b>Formulaire de recette</b></h1>
+                <h1><b>Ajoutez une recette</b></h1>
 
                 <form onSubmit={handleSubmit}>
                     <div className="titre">

@@ -3,7 +3,6 @@ import Navigation from '../components/Navigation';
 import Logo from '../components/Logo';
 import axios from 'axios';
 import ListRecipes from '../components/ListRecipes';
-import background from '../media/plat.jpg'
 
 const Home = () => {
 

@@ -55,15 +55,19 @@ const ModificationRecette = () => {
 
 
 const handleSubmit = (e) => {
-    const data = {...inputs};
+    const data = inputs;
     e.preventDefault()
     console.log(data)
+
+    data.ingredients = [["",""]]
+    data.personnes = parseInt(data.personnes)
+    data.tempsPreparation = parseInt(data.tempsPreparation)
     if (
-        !data.titre ||
-        !data.description ||
-        !data.niveau ||
-        !data.personnes ||
-        !data.tempsPreparation ||
+        !inputs.titre ||
+        !inputs.description ||
+        !inputs.niveau ||
+        !inputs.personnes ||
+        !inputs.tempsPreparation ||
         data.ingredients.length == 0 ||
         data.etapes.length == 0 
     ) {
@@ -71,12 +75,11 @@ const handleSubmit = (e) => {
         return
         
     }
-    
-        
-    console.log({...data})
+    console.log(data)
     editRecipe(id, data)
     alert('La recette a bien été modifié !')
     window.location.href = "/"
+
 
 
 }

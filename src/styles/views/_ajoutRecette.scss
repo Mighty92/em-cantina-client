@@ -7,7 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #258ea6;
+    background-color: white;
   }
   
   .form-wrapper {
@@ -75,10 +75,6 @@
   .etapes,
   .photo {
     margin-right: 1%;
-  }
-  
-  .lastName {
-    margin-left: 1%;
   }
   
   .titre,
@@ -153,7 +149,8 @@
   }
 
   .add{
-    background-color: #519e8a;
+    background-color: #232525;
+    color: white;
   }
 
   .ajt{

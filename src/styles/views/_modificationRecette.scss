@@ -1,13 +1,14 @@
 
 .wrapper {
-    margin-top: 50px;
+    margin-top: 0;
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #258ea6;
+    background-color: rgb(233, 230, 230);
+
   }
   
   .form-wrapper {
@@ -154,6 +155,8 @@
 
   .add{
     background-color: #519e8a;
+    color: white;
+
   }
 
   .ajt{

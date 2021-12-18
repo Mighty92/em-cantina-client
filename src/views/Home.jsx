@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import Logo from '../components/Logo';
 import axios from 'axios';
 import ListRecipes from '../components/ListRecipes';
+import background from '../media/plat.jpg'
 
 const Home = () => {
 
@@ -42,27 +43,8 @@ const Home = () => {
             <Logo/>
             <Navigation/>
             <hr className="menu"/>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <label className="form-control">
-                    <input onInput={(e)=>setSearchValue(e)}
-                        type="text" 
-                        placeholder="Recherchez votre type de plat"/> 
-                </label>
-
-                <label className="form-control" htlmlFor="ice-cream-choice">Filtrez par</label>
-                <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
-                    <datalist id="ice-cream-flavors">
-                        <option value="Titre"/>
-                        <option value="Catégorie"/>
-                        <option value="Date de sortie"/>
-                    </datalist>
-                <input
-                className="rechercher"
-                type="submit"
-                value="rechercher"/>
-            </form>
             <div className="menu">
-                <h1 className="bibli">Bibliothèque</h1>
+                <h1 className="bibli">Nos Recettes</h1>
                 <div className="menuList">
                     {recipes.map((recipes, index) => <ListRecipes recipes={recipes} key={index} onDeleteItem={()=>{deleteItem(index)}}/>)}
                 </div>
